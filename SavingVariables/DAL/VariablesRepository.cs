@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SavingVariables.DAL
 {
-    class VariablesRepository
+    public class VariablesRepository
     {
         public VariablesContext Context { get; set; }
 

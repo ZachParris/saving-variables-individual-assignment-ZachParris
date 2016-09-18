@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SavingVariables.Models
 {
-    class Variables
+    public class Variables
     {
         [Key]
         public int VariableId { get; set; }
