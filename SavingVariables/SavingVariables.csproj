@@ -67,9 +67,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201609181431109_InitialCreate.resx">
       <DependentUpon>201609181431109_InitialCreate.cs</DependentUpon>
