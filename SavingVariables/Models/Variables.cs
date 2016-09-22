@@ -13,7 +13,7 @@ namespace SavingVariables.Models
         public int VariableId { get; set; }
 
         [Required]
-        public char Variable { get; set; }
+        public char VariableName { get; set; }
 
         [Required]
         public int Value { get; set; }

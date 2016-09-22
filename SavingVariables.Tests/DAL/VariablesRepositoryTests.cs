@@ -57,6 +57,20 @@ namespace SavingVariables.Tests.DAL
 
             Assert.IsInstanceOfType(actual_context, typeof(VariablesContext));
         }
-
+        [TestMethod]
+        public void RepoEnsureRepoCanAddVariable()
+        {
+            VariablesRepository repo = new VariablesRepository();
+        }
+        [TestMethod]
+        public void RepoEnsureRepoCanAddVariableAndValue()
+        {
+            VariablesRepository repo = new VariablesRepository();
+        }
+        [TestMethod]
+        public void RepoEnsureRepoCanFindVariableById()
+        {
+            VariablesRepository repo = new VariablesRepository();
+        }
     }
 }

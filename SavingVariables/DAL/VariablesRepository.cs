@@ -26,6 +26,11 @@ namespace SavingVariables.DAL
             return Context.Variables.ToList();
         }
 
+        internal bool VariableExists(char id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void AddVariable(Variable variable)
         {
             Context.Variables.Add(variable);
@@ -33,12 +38,15 @@ namespace SavingVariables.DAL
         }
         public void AddVariableAndValue(char var, int val)
         {
-            Variable variable = new Variable { Variable = var, Value = val };
+            Variable variable = new Variable { VariableName = var, Value = val };
             Context.Variables.Add(variable);
             Context.SaveChanges();
         }
         public Variable FindVariableById(int varId)
         {
+           /* Author found_author = Context.Authors.FirstOrDefault(a => a.PenName.ToLower() == pen_name.ToLower());
+            +            return found_author;*/
+
             List<Variable> found_variable = Context.Variables.ToList();
             foreach (var variable in found_variable)
             {
@@ -58,6 +66,10 @@ namespace SavingVariables.DAL
                 Context.SaveChanges();
             }
             return found_variable;
+        }
+        public int GetVarValueByVarName(char Name)
+        {
+            throw new NotImplementedException();
         }
     }
 }
