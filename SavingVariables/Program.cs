@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SavingVariables.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,16 +11,14 @@ namespace SavingVariables
     {
         static void Main(string[] args)
         {
-            /*Your Program class and Main method should only be responsible for 
-            receiving user input and printing output.
-            If a user submits an incomplete command or expression, 
-            the application should not attempt to evaluate it but print out a useful message.
-            */
-            bool programRun = true;
-            Stack getLast = new Stack();
-            Expression newExp = new Expression();
+            Stack stack = new Stack();
+            Expression newVariable = new Expression();
+            VariablesRepository repo = new VariablesRepository();
+            EntryResponses response = new EntryResponses();
+            bool runProgram = true;
 
-            while (programRun)
+
+            while (runProgram)
             {
                 string prompt = ">>";
                 Console.Write(prompt);
@@ -28,30 +27,43 @@ namespace SavingVariables
                 {
                     switch (userInput)
                     {
+                        case "clear all":
+                        case "remove all":
+                        case "delete all":
+                            {
+                                repo.RemoveVariable();
+                                response.ClearEntireDatabase();
+                                break;
+                            }
+                        case "show all":
+                            {
+                                repo.Context.Variables.ToString();
+                                response.ShowAllExistingSavedVariables();
+                                break;
+                            }
                         case "lastq":
-                            Console.WriteLine(getLast.lastInput);
+                            Console.WriteLine(stack.lastInput);
                             break;
                         case "quit":
                         case "exit":
-                            programRun = false;
+                            runProgram = false;
                             break;
                         default:
                             try
                             {
-                                newExp.Parser(userInput);
-                                getLast.lastInput = userInput;
-                                Evaluation eval = new Evaluation();
+                                newVariable.Parser(userInput);
+                                stack.lastInput = userInput;
+                                Evaluation evaluation = new Evaluation();
                             }
-                            catch
+                            catch (Exception e)
                             {
-
+                                Console.WriteLine(e.Message);
                             }
-                           
                             break;
-                    }
+                     }
                 }
             }
-    } 
+         }
     }
 }
  

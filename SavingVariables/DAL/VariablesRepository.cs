@@ -57,6 +57,12 @@ namespace SavingVariables.DAL
             }
             return null;
         }
+
+        internal void RemoveVariable()
+        {
+            RemoveVariable();
+        }
+
         public Variable RemoveVariable(int varId)
         {
             Variable found_variable = FindVariableById(varId);
