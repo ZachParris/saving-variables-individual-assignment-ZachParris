@@ -13,11 +13,11 @@ namespace SavingVariables.Tests
             Assert.IsNotNull(tester);
         }
         [TestMethod]
-        public void ConstantsCanBeAddedToDictionary()
+        public void ConstantsCanBeAddedToRepository()
         {
             Constants tester = new Constants();
             char x = default(char);
-            tester.AddConstantsToRepository(x, 1);
+            tester.AddVariableToRepository(x, 1);
             Assert.AreEqual(tester.GetConstant(x), 1);
         }
         [TestMethod]
@@ -26,8 +26,8 @@ namespace SavingVariables.Tests
         {
             Constants tester = new Constants();
             char x = default(char);
-            tester.AddConstantsToRepository(x, 1);
-            tester.AddConstantsToRepository(x, 2);
+            tester.AddVariableToRepository(x, 1);
+            tester.AddVariableToRepository(x, 2);
         }
     }
 }

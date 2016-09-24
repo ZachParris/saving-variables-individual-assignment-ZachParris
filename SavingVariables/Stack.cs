@@ -9,6 +9,5 @@ namespace SavingVariables
     public class Stack
     {
         public string lastInput { get; set; }
-        public int lastResult { get; set; }
     }
 }

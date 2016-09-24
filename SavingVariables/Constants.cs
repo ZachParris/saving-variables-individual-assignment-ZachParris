@@ -26,7 +26,7 @@ namespace SavingVariables
             return repo.VariableExists(id);
         }
 
-        public void AddConstantsToDictionary(char key, int value)
+        public void AddVariableToRepository(char key, int value)
         {
             if (!CheckForExistingId(key))
             {

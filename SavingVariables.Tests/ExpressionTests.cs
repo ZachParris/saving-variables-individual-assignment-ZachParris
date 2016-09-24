@@ -23,7 +23,7 @@ namespace SavingVariables.Tests
         {
             Expression tester = new Expression();
             tester.Parser("1+2");
-            Assert.AreEqual(1, tester.term_1);
+            Assert.AreEqual(1, tester.variable);
         }
 
         [TestMethod]
