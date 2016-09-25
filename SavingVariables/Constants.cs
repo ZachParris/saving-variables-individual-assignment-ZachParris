@@ -16,17 +16,17 @@ namespace SavingVariables
             repo = new VariablesRepository();
         }
 
-        public void AddConstantsToRepository(char key, int val)
+        public void AddConstantsToRepository(string key, int val)
         {
             repo.AddVariableAndValue(key, val);
         }
 
-        public bool CheckForExistingId(char id)
+        public bool CheckForExistingId(string id)
         {
             return repo.VariableExists(id);
         }
 
-        public void AddVariableToRepository(char key, int value)
+        public void AddVariableToRepository(string key, int value)
         {
             if (!CheckForExistingId(key))
             {
@@ -38,7 +38,7 @@ namespace SavingVariables
             }
         }
 
-        public int GetConstant(char key)
+        public int GetConstant(string key)
         {
             if (CheckForExistingId(key))
             {

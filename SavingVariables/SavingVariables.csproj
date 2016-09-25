@@ -56,7 +56,6 @@
     <Compile Include="DAL\VariablesContext.cs" />
     <Compile Include="DAL\VariablesRepository.cs" />
     <Compile Include="EntryResponses.cs" />
-    <Compile Include="Evaluation.cs" />
     <Compile Include="Expression.cs" />
     <Compile Include="Migrations\201609181431109_InitialCreate.cs" />
     <Compile Include="Migrations\201609181431109_InitialCreate.Designer.cs">

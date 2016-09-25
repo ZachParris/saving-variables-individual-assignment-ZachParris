@@ -23,31 +23,35 @@ namespace SavingVariables.DAL
 
         public List<Variable> GetVariables()
         {
-            return Context.Variables.ToList();
+            return Context.VariablesDB.ToList();
         }
 
-        internal bool VariableExists(char id)
+        internal bool VariableExists(string id)
         {
             throw new NotImplementedException();
         }
 
         public void AddVariable(Variable variable)
         {
-            Context.Variables.Add(variable);
+            Context.VariablesDB.Add(variable);
             Context.SaveChanges();
         }
-        public void AddVariableAndValue(char var, int val)
+        public void AddVariableAndValue(string var, int val)
         {
-            Variable variable = new Variable { VariableName = var, Value = val };
-            Context.Variables.Add(variable);
+            Variable variable = new Variable { VariableName = var.ToString(), Value = val };
+            Context.VariablesDB.Add(variable);
             Context.SaveChanges();
         }
+
+        public void RemoveAllVariables()
+        {
+            List<Variable> variables = GetVariables();
+            Context.VariablesDB.RemoveRange(variables);
+        }
+
         public Variable FindVariableById(int varId)
         {
-           /* Author found_author = Context.Authors.FirstOrDefault(a => a.PenName.ToLower() == pen_name.ToLower());
-            +            return found_author;*/
-
-            List<Variable> found_variable = Context.Variables.ToList();
+            List<Variable> found_variable = Context.VariablesDB.ToList();
             foreach (var variable in found_variable)
             {
                 if(variable.VariableId == varId)
@@ -58,22 +62,18 @@ namespace SavingVariables.DAL
             return null;
         }
 
-        internal void RemoveVariable()
-        {
-            RemoveVariable();
-        }
-
         public Variable RemoveVariable(int varId)
         {
             Variable found_variable = FindVariableById(varId);
             if (found_variable != null)
             {
-                Context.Variables.Remove(found_variable);
+                Context.VariablesDB.Remove(found_variable);
                 Context.SaveChanges();
             }
             return found_variable;
         }
-        public int GetVarValueByVarName(char Name)
+
+        public int GetVarValueByVarName(string Name)
         {
             throw new NotImplementedException();
         }
