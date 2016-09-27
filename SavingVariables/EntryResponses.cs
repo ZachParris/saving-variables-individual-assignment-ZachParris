@@ -10,6 +10,8 @@ namespace SavingVariables
     public class EntryResponses
     {
         VariablesRepository repo = new VariablesRepository();
+        public string initial_prompt = "Welcome! Have fun storing numbers as variables! (i.e.'b = 2') WaHOO!";
+        public string prompt = ">>";
 
         public string AddNewVariableToDB(string var, int val)
         {
@@ -36,10 +38,9 @@ namespace SavingVariables
             return string.Format(" = deleted all items from database!");
         }
 
-        public string ShowAllExistingSavedVariables()
+        public string ShowAllExistingSavedVariables(string variables)
         {
-            return string.Format("Name -> Value");
-            /*repo.Context.Variables.ToString();*/
+            return string.Format("Name -> Value {1} {0}" , variables, System.Environment.NewLine);
         }
 
         public string DatabaseIsEmptyResponse()

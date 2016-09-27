@@ -9,10 +9,11 @@ namespace SavingVariables
 {
     public class Expression
     {
-        public char variable { get; set; }
+        public string variable { get; set; }
         public int number { get; set; }
-        public char _operator { get; set; }
-        string regex_match = @"(?<Variable>[a-zA-Z])\s=\s(?<Number>-?\d*)$";
+        string regex_match = @"(\s*(?<Variable>[A-Za-z])\s*=\s*(?<Value>[-]?\d*)\s*)$";
+        string regex_clearAll = @" ^ (?<Command> clear | remove | delete | show)\s*(?<target>all|[a-zA-Z])$";
+        string regex_clearOne = @"(\s*(?<Command>(show))\s*(?<Variable>[A-Za-z])\s*)$";
         public bool invalidEntry { get; set; }
         private Constants consts = new Constants();
 
@@ -24,8 +25,8 @@ namespace SavingVariables
 
                 if (match.Success)
                 {
-                    variable = Convert.ToChar(match.Groups["Variable"].Value.ToLower());
-                    number = int.Parse(match.Groups["Number"].Value);
+                    variable = match.Groups["Variable"].Value.ToLower();
+                    number = Convert.ToInt32(match.Groups["Value"].Value);
                     consts.AddVariableToRepository(variable, number);
                 }
                 else

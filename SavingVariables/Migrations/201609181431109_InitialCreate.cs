@@ -12,6 +12,7 @@ namespace SavingVariables.Migrations
                 c => new
                     {
                         VariableId = c.Int(nullable: false, identity: true),
+                        VariableName = c.String(nullable: false),
                         Value = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.VariableId);

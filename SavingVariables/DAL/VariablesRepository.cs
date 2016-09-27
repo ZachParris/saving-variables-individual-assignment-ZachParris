@@ -26,9 +26,17 @@ namespace SavingVariables.DAL
             return Context.Variables.ToList();
         }
 
-        internal bool VariableExists(char id)
+        internal bool VariableExists(string id)
         {
-            throw new NotImplementedException();
+            Variable newVar = new Variable();
+            if (FindVariableById(newVar.VariableId) != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void AddVariable(Variable variable)
@@ -36,17 +44,23 @@ namespace SavingVariables.DAL
             Context.Variables.Add(variable);
             Context.SaveChanges();
         }
-        public void AddVariableAndValue(char var, int val)
+        public void AddVariableAndValue(string var, int val)
         {
-            Variable variable = new Variable { VariableName = var, Value = val };
+            Variable variable = new Variable { VariableName = var.ToString(), Value = val };
             Context.Variables.Add(variable);
             Context.SaveChanges();
         }
+
+        public void RemoveAllVariables()
+        {
+            List<Variable> variables = GetVariables();
+            Context.Variables.RemoveRange(variables);
+        }
+
         public Variable FindVariableById(int varId)
         {
-           /* Author found_author = Context.Authors.FirstOrDefault(a => a.PenName.ToLower() == pen_name.ToLower());
-            +            return found_author;*/
-
+            var context = Context.Variables;
+            var list = context.ToList();
             List<Variable> found_variable = Context.Variables.ToList();
             foreach (var variable in found_variable)
             {
@@ -56,11 +70,6 @@ namespace SavingVariables.DAL
                 }
             }
             return null;
-        }
-
-        internal void RemoveVariable()
-        {
-            RemoveVariable();
         }
 
         public Variable RemoveVariable(int varId)
@@ -73,7 +82,8 @@ namespace SavingVariables.DAL
             }
             return found_variable;
         }
-        public int GetVarValueByVarName(char Name)
+
+        public int GetVarValueByVarName(string Name)
         {
             throw new NotImplementedException();
         }
