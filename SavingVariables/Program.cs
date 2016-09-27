@@ -13,10 +13,9 @@ namespace SavingVariables
         static void Main(string[] args)
         {
             Stack stack = new Stack();
-            Expression newVariable = new Expression();
+            Expression newExpression = new Expression();
             VariablesRepository repo = new VariablesRepository();
             EntryResponses response = new EntryResponses();
-            Evaluation evaluation = new Evaluation();
             bool runProgram = true;
             Console.WriteLine(response.initial_prompt);
 
@@ -52,20 +51,16 @@ namespace SavingVariables
                             runProgram = false;
                             break;
                         default:
-                            try
                             {
-                                newVariable.Parser(userInput);
+                                newExpression.Parser(userInput);
                                 stack.lastInput = userInput;
+                                break;
                             }
-                            catch (Exception e)
-                            {
-                                Console.WriteLine("Nope.");
-                            }
-                            break;
                      }
                 }
             }
-         }
+            Console.ReadKey();
+        }
     }
 }
  

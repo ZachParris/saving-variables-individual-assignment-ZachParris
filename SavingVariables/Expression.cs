@@ -26,7 +26,7 @@ namespace SavingVariables
                 if (match.Success)
                 {
                     variable = match.Groups["Variable"].Value.ToLower();
-                    number = Convert.ToInt32(match.Groups["Number"].Value);
+                    number = Convert.ToInt32(match.Groups["Value"].Value);
                     consts.AddVariableToRepository(variable, number);
                 }
                 else

@@ -11,6 +11,6 @@ namespace SavingVariables.DAL
 {
     public class VariablesContext : DbContext
     {
-        public virtual DbSet<Variable> VariablesDB { get; set; }
+        public virtual DbSet<Variable> Variables { get; set; }
     }
 }

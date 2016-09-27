@@ -23,35 +23,45 @@ namespace SavingVariables.DAL
 
         public List<Variable> GetVariables()
         {
-            return Context.VariablesDB.ToList();
+            return Context.Variables.ToList();
         }
 
         internal bool VariableExists(string id)
         {
-            throw new NotImplementedException();
+            Variable newVar = new Variable();
+            if (FindVariableById(newVar.VariableId) != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void AddVariable(Variable variable)
         {
-            Context.VariablesDB.Add(variable);
+            Context.Variables.Add(variable);
             Context.SaveChanges();
         }
         public void AddVariableAndValue(string var, int val)
         {
             Variable variable = new Variable { VariableName = var.ToString(), Value = val };
-            Context.VariablesDB.Add(variable);
+            Context.Variables.Add(variable);
             Context.SaveChanges();
         }
 
         public void RemoveAllVariables()
         {
             List<Variable> variables = GetVariables();
-            Context.VariablesDB.RemoveRange(variables);
+            Context.Variables.RemoveRange(variables);
         }
 
         public Variable FindVariableById(int varId)
         {
-            List<Variable> found_variable = Context.VariablesDB.ToList();
+            var context = Context.Variables;
+            var list = context.ToList();
+            List<Variable> found_variable = Context.Variables.ToList();
             foreach (var variable in found_variable)
             {
                 if(variable.VariableId == varId)
@@ -67,7 +77,7 @@ namespace SavingVariables.DAL
             Variable found_variable = FindVariableById(varId);
             if (found_variable != null)
             {
-                Context.VariablesDB.Remove(found_variable);
+                Context.Variables.Remove(found_variable);
                 Context.SaveChanges();
             }
             return found_variable;
