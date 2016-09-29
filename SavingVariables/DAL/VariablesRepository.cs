@@ -44,7 +44,7 @@ namespace SavingVariables.DAL
             Context.Variables.Add(variable);
             Context.SaveChanges();
         }
-        public void AddVariableAndValue(string var, int val)
+        public virtual void AddVariableAndValue(string var, int val)
         {
             Variable variable = new Variable { VariableName = var.ToString(), Value = val };
             Context.Variables.Add(variable);

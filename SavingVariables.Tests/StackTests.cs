@@ -16,14 +16,8 @@ namespace SavingVariables.Tests
         public void CanGetLastEquation()
         {
             Stack tester = new Stack();
-            tester.lastInput = "1+2";
-            Assert.AreEqual("1+2", tester.lastInput);
-        }
-        [TestMethod]
-        public void CanGetLastAnswer()
-        {
-            Stack tester = new Stack();
-            Assert.AreEqual(0, tester.lastResult);
+            tester.lastInput = "a = 2";
+            Assert.AreEqual("a = 2", tester.lastInput);
         }
     }
 }
