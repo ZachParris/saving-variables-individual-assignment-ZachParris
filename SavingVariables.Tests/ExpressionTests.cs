@@ -16,30 +16,22 @@ namespace SavingVariables.Tests
         public void AcceptsSpaces()
         {
             Expression tester = new Expression();
-            tester.Parser("1 + 2");
+            tester.Parser("a = 2");
         }
         [TestMethod]
-        public void CaptureFirstTerm()
+        public void CaptureVariable()
         {
             Expression tester = new Expression();
-            tester.Parser("1+2");
-            Assert.AreEqual(1, tester.variable);
+            tester.Parser("a = 2");
+            Assert.AreEqual("a", tester.variable);
         }
 
         [TestMethod]
-        public void CaptureOperator()
-        {
-            Expression opTester = new Expression();
-            opTester.Parser("1+2");
-            Assert.AreEqual('+', opTester._operator);
-        }
-
-        [TestMethod]
-        public void CatureSecondTerm()
+        public void CatureValueOfVariable()
         {
             Expression tester = new Expression();
-            tester.Parser("1+2");
-            Assert.AreEqual(2, tester.term_2);
+            tester.Parser("a = 2");
+            Assert.AreEqual(2, tester.number);
         }
 
         [TestMethod]

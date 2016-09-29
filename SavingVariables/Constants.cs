@@ -9,11 +9,17 @@ namespace SavingVariables
 {
     public class Constants
     {
+
         public VariablesRepository repo { get; set; }
 
         public Constants()
         {
             repo = new VariablesRepository();
+        }
+
+        public Constants(VariablesRepository _repo)
+        {
+            repo = _repo;
         }
 
         public void AddConstantsToRepository(string key, int val)
