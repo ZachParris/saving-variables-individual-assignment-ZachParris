@@ -55,6 +55,7 @@ namespace SavingVariables.DAL
         {
             List<Variable> variables = GetVariables();
             Context.Variables.RemoveRange(variables);
+            Context.SaveChanges();
         }
 
         public Variable FindVariableById(int varId)
